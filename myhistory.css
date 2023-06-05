@@ -1,0 +1,49 @@
+.div{
+    margin-top: 40px !important;
+}
+.bottom{
+    text-align: end;
+}
+.fadi{
+    color: grey;
+    margin-top: 50px;
+}
+.fad2{
+    color: rgb(6, 46, 6);
+    font-size: 25px;
+}
+.hist{
+    height: 340px;
+}
+.none{
+    display: none;
+}
+@media (max-width:688px) {
+    .container{
+        width: 300px !important;
+        margin-top: 20px;
+    }
+    .shadow{
+        width: 300px !important;
+        height: 150px;
+        padding-top: 30px;
+    }
+    .bottom{
+        font-size: 11px;
+    }
+    .hist{
+        height: 300px;
+        width: 300px;
+        margin: auto !important;
+        margin-top: 30px !important;
+    }
+    .but{
+        position: relative !important;
+        top: -45px !important;
+        left:60px;
+    }
+    .bt{
+        position: relative;
+        top: -30px;
+    }
+}

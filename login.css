@@ -1,0 +1,106 @@
+.container{
+    /* border: 1px solid orangered; */
+    height: 200px;
+}
+.background{
+    background-image: url(./istockphoto-1216481372-612x612.jpg);
+    height: 200px;
+    background-size: contain;
+}
+.purpose{
+    height: 400px;
+    background-color: white;
+}
+.form-control{
+    margin-top: 10px;
+    border: 1px solid orangered;
+}
+.inputBox{
+    position: relative;
+    width: 300px;
+    margin: auto;
+    margin-top: 35px;
+}
+.inputBox input{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;  
+    z-index: 10;
+}
+.inputBox span{
+    position: absolute;
+    left: 0%;
+    padding: 20px 0px 10px;
+    font-size: 1em;
+    color: #8f8f8f;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.7s;
+    
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span{
+    color: black;
+    transform:translateX(0px) translateY(-40px);
+    font-size: 0.75em;
+}
+.inputBox i{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    /* background: #4845ff; */
+    border:1px solid;
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.inputBox input:valid ~ i,
+.inputBox input:focus ~ i{
+    height: 44px;
+}
+.bottom{
+    background-color: rgba(128, 128, 128, 0.103);
+    padding-top: 10px;
+    color: black;
+}
+@media (max-width:500px) {
+    .purpose{
+        width: 300px;
+        box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.39);
+        margin: auto;
+        position: relative;
+        top: -100px;
+        padding: 30px;
+        height: 500px;
+    } 
+    .background{
+        height: 320px;
+        /* width: 300px; */
+    }
+    .inputBox{
+        width: 250px !important;
+    }
+    p{
+        text-align: center;
+        position: relative;
+        top: 10px;
+    }
+    .appreciation{
+        position: relative;
+        top: 20px;
+    }
+    /* .background{
+        background-image: url(./istockphoto-1216481372-612x612.jpg);
+        height: 300px;
+        background-size: contain;
+    } */
+    
+}

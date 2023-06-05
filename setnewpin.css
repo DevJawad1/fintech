@@ -1,0 +1,15 @@
+#card{
+  padding-top: 50px;
+}
+@media (max-width:500px) {
+  .form-control {
+    margin-top: 20px;
+  }
+
+}
+
+.container p {
+  position: relative;
+  top: 15px;
+}
+

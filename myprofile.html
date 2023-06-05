@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="">
+</head>
+
+<body class="p-3">
+    <div class="container shadow p-5 mt-5" id="passArena">
+        <div id="alerting" style=" height: 55px;position: relative; top: -20px; text-align: center; padding: 15px; "></div>
+        <p>Input your login password</p>
+        <input type="text" name="" id="password" class="form-control">
+        <p class="text-center" style="margin-top: 10px;">To avoid any form of scam and account impersonation , we recommend you to enter your password before viewing or editing your profile</p>
+        <div class="mx-auto " style="width: 80px;">
+            <button class="btn btn-success mt-2" onclick="submit()">Submit</button>
+        </div>
+        <button class="btn btn-warning mt-2 form-control" onclick="back()">Back</button>
+    </div>
+    <div class="container p-5 shadow" style="display:none" id="myProfile">
+        <div class="shadow" style="width: 150px; height: 150px; border-radius: 150px; margin: auto; border: 1px solid;"
+            id="showimg">
+
+        </div>
+        <div class="d-flex">
+            <input type="text" name="" id="fname" class="form-control mt-3" placeholder="firstame">
+            <input type="text" name="" id="lname" class="form-control mt-3" placeholder="Laststname">
+        </div>
+        <input type="text" name="" id="email" class="form-control mt-3" placeholder="Input you email">
+        <div class="d-flex">
+            <input type="text" name="" id="pnumber" class="form-control mt-3" placeholder="PhoneNumber">
+            <input type="text" name="" id="acct" class="form-control mt-3" readonly placeholder="Account number">
+        </div>
+        <input type="text" name="" id="bvn" class="form-control mt-3" placeholder="Input your BVN/NIN">
+        <input type="text" name="" id="home" class="form-control mt-3" placeholder="Input your Home adrress">
+        <!-- <div class="d-flex">
+            <input type="password" name="" id="pass" class="form-control mt-3 " readonly placeholder="Password">
+            <input type="password" name="" id="pin" class="form-control mt-3 " readonly placeholder="Pin">
+        </div> -->
+        <button class="btn btn-success form-control mt-3" onclick="update()">Save changes</button>
+    </div>
+
+    <style>
+        @media (max-width:400px) {
+            #alerting{
+                height: 60px !important;
+            }
+        }
+    </style>
+    <script>
+        var getBack = JSON.parse(localStorage.getItem('userdetails'))
+        var index = localStorage.getItem('oneuser')
+
+        fname.value = getBack[index].fname
+        lname.value = getBack[index].lname
+        email.value = getBack[index].mail
+        acct.value = getBack[index].acc
+        bvn.value=getBack[index].bvn
+        home.value=getBack[index].state
+        pnumber.value = getBack[index].pnumber
+        const showimg = document.getElementById('showimg');
+        console.log(document.getElementById('showimg'));
+        // const imageDisplay = document.getElementById('imageDisplay');
+
+
+        showimg.addEventListener('click', () => {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    const imageUrl = reader.result;
+                    showimg.style.backgroundImage = `url(${imageUrl})`;
+                    localStorage.setItem('uploadedImage', imageUrl);
+                });
+                reader.readAsDataURL(file);
+            });
+            input.click();
+        });
+        const uploadedImage = localStorage.getItem('uploadedImage');
+        if (uploadedImage) {
+            showimg.style.backgroundImage = `url(${uploadedImage})`;
+            showimg.style.backgroundSize = "cover";
+            showimg.style.backgroundRepeat = "no-repeat";
+            showimg.style.backgroundPosition = "center";
+        }
+        const submit = () => {
+            if (password.value == "") {
+                alerting.innerHTML = "Input your password"
+                alerting.style.border = "thin solid"
+                alerting.style.backgroundColor="rgba(220, 220, 220, 0.268)"
+                setTimeout(function () { alerting.innerHTML = "", alerting.style.border = "none", alerting.style.backgroundColor="white" }, 2000)
+            }
+            else {
+                if (password.value !== getBack[index].pword) {
+                    alerting.innerHTML = "Incorrect password 2 trial remaining"
+                    alerting.style.border = "thin solid"
+                    alerting.style.backgroundColor="rgba(220, 220, 220, 0.268)"
+                    setTimeout(function () { alerting.innerHTML = "", alerting.style.border = "none",alerting.style.backgroundColor="white" }, 2000)
+                }
+                else{
+                    alerting.innerHTML = "User identification successful"
+                    alerting.style.border = "thin solid"
+                    alerting.style.backgroundColor="rgba(220, 220, 220, 0.268)"
+                    setTimeout(function () { alerting.innerHTML = "", alerting.style.border = "none" ,myProfile.style.display="block",myProfile.style.transition="15 s", passArena.style.display="none"}, 1500)
+                }
+            }
+        }
+        const update = () => {
+            if (fname.value == "" || lname.value == "" || email.value == "" || acct.value == "" || pnumber.value == "" || home.value == "" || bvn.value == "") {
+                alert("All field is recquired to fill")
+            } {
+                getBack[index].fname = fname.value
+                getBack[index].lname = lname.value
+                getBack[index].mail = email.value
+                getBack[index].acc = acct.value
+                getBack[index].pnumber = pnumber.value
+                getBack[index].state = home.value
+                getBack[index].bvn = bvn.value
+                localStorage.setItem("userdetails", JSON.stringify(getBack))
+            }
+        }
+
+        const back=()=>{
+            if(localStorage.locator!==""){
+                window.location.href="setnewpin.html"
+                var empty=""
+                localStorage.setItem('locator',empty)
+            }
+            else{
+                window.location.href="dashboard.html"
+            }
+        }
+    </script>
+</body>
+<style>
+    .one{
+        transition: 0.5ms;
+    }
+</style>
+</html>

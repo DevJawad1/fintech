@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h4>Upload Picture</h4>
+    <p class="text-center">A sharp and smooth picture is reconmmended <br>We won't tolerate a blur picture <br>Thank you
+    </p>
+    <div class="container">
+        <input type="file" id="imageUpload">
+        <img src="" id="output" width="200" />
+        <div class="div">
+            <img id="imageDisplay" src="" alt="Uploaded Image" class="btn btn-primary">
+        </div>
+        <div id="result"></div>
+        
+
+          
+      <br>
+      <button type="submit">Upload</button>
+    </form>
+    <img src="" alt="oops" id="show">
+    </div>
+    <style>
+        body {
+            background-color: rgba(128, 128, 128, 0.199);
+        }
+
+        body h4 {
+            color: black;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .form-control {
+            margin-top: 10px;
+        }
+
+        .container {
+            padding: 70px;
+            border: 1px solid;
+        }
+
+        .div {
+            width: 100px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .btn {
+            width: 100px;
+        }
+
+        @media (max-width:500px) {
+            .container {
+                padding: 20px;
+                padding-top: 60px;
+                margin-top: 100px;
+            }
+        }
+    </style>
+    <script>
+        let imageInput = document.getElementById("imageUpload");
+        let imageDisplay = document.getElementById("imageDisplay");
+        let show = document.getElementById("show")
+
+        // Check if the user has already uploaded an image
+        if (localStorage.getItem("imageData")) {
+            let imageData = localStorage.getItem("imageData");
+            let imageSrc = `data:image/png;base64,${imageData}`;
+            imageDisplay.setAttribute("src", imageSrc);
+            show.setAttribute("src", imageSrc);
+        }
+
+        // Save uploaded image to localStorage
+        function handleImageUpload(event) {
+            event.preventDefault();
+
+            let file = imageInput.files[0];
+            if (!file) {
+                return;
+            }
+
+            let reader = new FileReader();
+            reader.onload = function (event) {
+                let imageData = btoa(event.target.result);
+                localStorage.setItem("imageData", imageData);
+
+                let imageSrc = `data:${file.type};base64,${imageData}`;
+                imageInput.setAttribute("src", imageSrc);
+                show.setAttribute("src", imageSrc)
+            };
+            reader.readAsBinaryString(file);
+        }
+
+        imageInput.addEventListener("change", handleImageUpload);
+    </script>
+</body>
+
+</html>

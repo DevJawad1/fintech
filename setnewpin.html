@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./setnewpin.css">
+</head>
+
+<body>
+  <div class="container-fluid p-3" id="output">
+    <p class="text-center">Account security setting</p>
+    <p style="border-bottom: 1px solid grey;" onclick="changePassword()">Change Password</p>
+    <p style="border-bottom: 1px solid grey;" onclick="changePin()">Change TransactionPin</p>
+    <p style="border-bottom: 1px solid grey;">Forget Password</p>
+    <p style="border-bottom: 1px solid grey;">Forget Pin</p>
+    <p style="border-bottom: 1px solid grey;" onclick="edit()">Edit Profile</p>
+    <button onclick="home()" class="btn btn-success">Back-to-Home</button>
+  </div>
+
+
+  <script>
+    var getBack = JSON.parse(localStorage.getItem("userdetails"))
+    var index = localStorage.getItem('oneuser')
+    var getacc = localStorage.getItem('account')
+    var getName = JSON.parse(localStorage.getItem('name'))
+
+    getBack.filter((user, i) => {
+      if (getName == user.lname && getacc == user.acc) {
+        console.log(user)
+      }
+    })
+
+    //  if(getName==getBack[index].lname&& getacc==getBack[index].acc){
+    //   console.log(index)
+    //  }
+
+    const changePin = () => {
+      output.innerHTML = `
+      <div class="container p-3 shadow">
+        <h4 class="text-center">Account Pin setting</h4>
+        <p>Previous pin</p>
+        <input type="number" name="" id="pevPin"  maxlength="4" class="form-control" placeholder="4digit pin">
+        <p>New pin</p>
+        <input type="number" name="" id="newPin" class="form-control" placeholder="4digit pin">
+        <p>Confirm pin</p>
+        <input type="number" name="" id="conPin" class="form-control" placeholder="4digit pin">
+        <button class="form-control btn btn-success" onclick="updatepin()">Done</button>
+        <button class="form-contro btn btn-warning mt-2" onclick="back()">Back</button>
+    </div>
+      `
+    }
+
+    const updatepin = () => {
+      if (pevPin == "" || newPin == "" || conPin.value == "") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Fill all the details!',
+        })
+      }
+      else if(newPin.value.lenght<4 || newPin.value.lenght>4){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Pin should be 4 digit',
+        })
+      }
+      else if (conPin.value !== newPin.value) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your new pin is not compatible with confirm pin',
+        })
+      }
+      else if (getBack[index].pin == "") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Go to dashboard and set ur transaction pin',
+        })
+      }
+      else if (pevPin.value !== getBack[index].pin) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'This not your previous pin',
+        })
+      }
+      else {
+        Swal.fire(
+          'Pin successful',
+          'You have successfully create a new pin!',
+          'success'
+        )  
+        getBack[index].pin = (newPin.value)
+        console.log(getBack[index].pin)
+        localStorage.setItem('userdetails', JSON.stringify(getBack))
+      }
+
+    }
+
+    const changePassword = () => {
+      output.innerHTML = `
+      <div class="container p-3 shadow">
+        <h4 class="text-center">Account Password setting</h4>
+        <p>Previous Password</p>
+        <input type="number" name="" id="pevPass"  maxlength="4" class="form-control" placeholder="4digit pin">
+        <p>New Password</p>
+        <input type="number" name="" id="newPass" class="form-control" placeholder="4digit pin">
+        <p>Confirm Password</p>
+        <input type="number" name="" id="conPass" class="form-control" placeholder="4digit pin">
+        <button class="form-control btn btn-success" onclick="updatepass()">Done</button>
+        <button class="form-contro btn btn-warning mt-2" onclick="back()">Back</button>
+    </div>
+      `
+    }
+
+    const updatepass = () => {
+      if (pevPass == "" || newPass == "" || conPass.value == "") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Fill all the details!',
+        })
+      }
+      else if(newPass.lenght<6){
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Password should be 6 digit or above',
+        })
+      }
+      else if (conPass.value !== newPass.value) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Your new password is not compatible with confirm password',
+        })
+
+      }
+      else if (getBack[index].pin == "") {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Go to dashboard and set your transaction pin',
+        })
+      }
+      else if (pevPass.value !== getBack[index].pword) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'This not your previous passowrd',
+        })
+      }
+      else {
+        Swal.fire(
+          'Password successful',
+          'You have successfully create a new password',
+          'success'
+        )  
+        getBack[index].pword = (newPass.value)
+        console.log(getBack[index].pword)
+        localStorage.setItem('userdetails', JSON.stringify(getBack))
+      }
+
+    }
+
+    const back = () => {
+      output.innerHTML = `
+      <div class="container-fluid p-3" id="">
+    <p class="text-center">Account Security setting</p>
+    <p style="border-bottom: 1px solid grey;" onclick="changePassword()">Change Password</p>
+    <p style="border-bottom: 1px solid grey;" onclick="changePin()">Change TransactionPin</p>
+    <p style="border-bottom: 1px solid grey;">Forget Password</p>
+    <p style="border-bottom: 1px solid grey;">Forget Pin</p>
+    <p style="border-bottom: 1px solid grey;">Edit Profile</p>
+    <button onclick="home()" class="btn btn-success">Back-to-Home</button>
+  </div>
+      `
+    }
+    const home = () => {
+      window.location.href = "dashboard.html"
+    }
+
+    const edit=()=>{
+      window.location.href="myprofile.html"
+      localStorage.setItem("locator","from security")
+    }
+  </script>      
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
+</body>
+
+</html>

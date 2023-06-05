@@ -1,0 +1,21 @@
+.navigation{
+ background-image: url(./Landing-Page-Open-an-account.png);
+}
+.transfer-div{
+    background-image: url(./Landing-Page-Open-an-account.png) !important;
+}
+#showAcc{
+    position: relative;
+    top: 10px;
+}
+#showName{
+    position: relative;
+    top: 10px;
+    text-align: center !important;
+}
+.offcanvas-body h5{
+    line-height: 3em;
+}
+.side-canvas{
+    width: 250px !important;
+}

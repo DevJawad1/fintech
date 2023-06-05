@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="./dash.css">
+  <link rel="stylesheet" href="./phone.css" media="(max-width:500px)">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="">
+  <title>Document</title>
+</head>
+
+<body id="water" onload="load()">
+  <div class="general">
+
+  </div>
+  <div class="main" id="manny">
+
+
+
+    <div class="offcanvas offcanvas-start side-canvas" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+      aria-labelledby="offcanvasWithBothOptionsLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Digitize Bank</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body canva">
+        <h5><i class="ri-home-wifi-line"></i> <a href="./dashboard.html">Home</a></h5>
+        <h5><i class="ri-profile-line"></i><a href="./myprofile.html">Profile</a></h5>
+        <h5><i class="ri-bookmark-3-line"></i><a href="./myHistory.html">History</a></h5>
+        <h5><i class="ri-settings-4-line"></i><a href="./setnewpin.html">Security Setting</a></h5>
+        <h5><i class="ri-sim-card-fill"></i><a href="./mycard.html">Card Setting</a></h5>
+        <h5><i class="ri-logout-box-line"></i><a href="./login.html">Log out</a></h5>
+        <h5><a href="">.</a></h5>
+        <h5><a href="">Contanct us for more enquiry</a></h5>
+        <h5><a href="">09152280668</a></h5>
+      </div>
+    </div>
+    <div class="topbar fixed-top">
+
+      <button class="btn fs-3 mt-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
+        aria-controls="offcanvasWithBothOptions"><i class="ri-menu-2-fill"></i></button>
+      <h2 id="showName" class="fs-4"></h2>
+      <h2 style="color: rgb(88, 7, 22);" id="showAcc" class="fs-4"></h2>
+      <div class="search">
+        <div class="user" id="imageUploadBtn">
+          <!-- <img id="imageDisplay" src="" alt="" style="width: 40px;"> -->
+        </div>
+      </div>
+      <!-- <div class="container-2" id="dgTransfer"></div> -->
+    </div>
+
+
+    <!-- ======================= Cards ================== -->
+    <div class="cardBox">
+      <div class="card">
+        <div class="inner-card">
+          <div>
+            <div class="numbers">Transfer</div>
+            <div class="cardName">Money Send</div>
+          </div>
+
+          <div class="iconBx">
+            <i class="ri-arrow-up-fill"></i>
+          </div>
+        </div>
+        <div class="numbers">100</div>
+      </div>
+
+      <div class="card">
+        <div class="inner-card">
+          <div>
+            <div class="numbers">Deposit</div>
+            <div class="cardName">Income Money</div>
+          </div>
+
+          <div class="iconBx">
+            <i class="ri-arrow-down-fill"></i>
+          </div>
+        </div>
+        <div class="numbers" id="dep">100</div>
+      </div>
+      <div class="two-card">
+        <div class="card-bal">
+          <p id="limit"></p>
+          <div class="inner-card">
+            <div>
+              <div class="numbers">Balance
+                <button onclick="hide()" class=" btn-primary hide-btn" id="hiding" style="width: 40px;"><i
+                    class="ri-eye-fill"></i></button>
+                <button class="btn btn-light" onclick="moneyadd()">Add money</button>
+              </div>
+              <div class="cardName">Current Amount</div>
+            </div>
+          </div>
+          <div style="display: flex;" class="bal-holder">
+            <!-- <span class="numbers" id="dollar">$</span> -->
+            <span class="numbers" id="balance">500</span>
+          </div>
+        </div>
+        <div class="card-1">
+          <button class="btn btn-set" onclick="setPin()">Set pin</button>
+          <div class="inner-card">
+            <div class="flex">
+              <button type="button" class="btn btn-pro " data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Profile Info
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">See your profile info here</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div style="color: black;" id="tellusernum"></div>
+                      <div style="color: black;" id="telluserfname"></div>
+                      <div style="color: black;" id="telluserlname"></div>
+                      <div style="color: black;" id="telluserpnumber"></div>
+                      <div style="color: black;" id="tellAccno"></div>
+                      <!-- <button class="btn" onclick="seeLegal()">See your legal info</button> -->
+                      <div id="telllbvn"></div>
+                      <div id="telllnation"></div>
+                      <div id="tellstt"></div>
+                      <div id="telladd"></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn btn-leg" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight">upgrade account</button>
+
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasRightLabel"> Fill your legal information right here</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <p>BVN/NIN</p>
+                  <input type="text" name="" id="bvn" class="form-control">
+                  <p>E-mail</p>
+                  <input type="text" name="" id="email" class="form-control">
+                  <p>Nationality</p>
+                  <input type="text" name="" id="nation" class="form-control">
+                  <p>State</p>
+                  <input type="text" name="" id="state" class="form-control">
+                  <p>Adress</p>
+                  <input type="text" name="" id="adres" class="form-control">
+                  <span>Daily Transaction</span>
+                  <input type="checkbox">
+                  <span>Other Transaction</span>
+                  <input type="checkbox">
+                  <p>Gender</p>
+                  <span>Male</span>
+                  <input type="radio">
+                  <span>Female</span>
+                  <input type="radio">
+                  <input type="submit" name="" id="" class="form-control btn" onclick="addSubmit()"
+                    style="background-color: rgb(7, 32, 7);color: white;">
+
+                </div>
+              </div>
+              <button class="btn btn-tra" type="button" onclick="historical()">History</button>
+
+              <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom"
+                aria-labelledby="offcanvasBottomLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasBottomLabel">See recent Transaction</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body small">
+                  ...
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+    <div class="all-button">
+      <h4>Money Transfer</h4>
+      <div class="money-transfer">
+        <div class="modal-footer">
+          <button class="btn " data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">
+            <i class="ri-bank-fill "></i>
+            <p>To bank</p></a>
+
+          </button>
+        </div>
+        <button class=" btn" onclick="innerTransfer()" id="myBtn"><a href="mybanktranfer.html">
+            <h6>DG</h6>
+            <p>To digital</p>
+          </a></button>
+        <button class="btn"><a href="./mybankapp.html"><i class="ri-money-dollar-box-line"></i>
+            <p>Add Money</p>
+          </a></button>
+        <button class="btn"><a href=""><i class="ri-store-2-line"></i>
+            <p>Pay Shop</p>
+          </a></button>
+      </div>
+      <h4>Services</h4>
+      <div class="service-button">
+        <div class="Services" style="border-top-left-radius:10px ;border-top-right-radius:10px">
+
+          <div class="modal-footer">
+            <button class="btn "><a href=""><i class="ri-database-line"></i>
+                <p>Data Bundle</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class=" btn"><a href=""><i class="ri-phone-fill"></i>
+                <p>Airtime</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class="btn"><a href=""><i class="ri-football-fill"></i></i>
+                <p>Betting</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class="btn"><a href=""><i class="ri-lightbulb-flash-fill"></i>
+                <p>Electricity</p>
+              </a></button>
+          </div>
+
+        </div>
+        <div class="Services butter">
+
+          <div class="modal-footer">
+            <button class="btn "><a href=""><i class="ri-slideshow-3-fill"></i>
+                <p>TV station</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class=" btn"><a href=""><i class="ri-stack-fill"></i>
+                <p>Annual eveiew</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class="btn"><a href=""><i class="ri-bank-card-2-line"></i>
+                <p>Credit</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class="btn"><a href=""><i class="ri-money-dollar-box-fill"></i>
+                <p>Refer and earn</p>
+              </a></button>
+          </div>
+
+        </div>
+        <div class="Services buter" style="border-bottom-left-radius:10px ;border-bottom-right-radius:10px">
+
+          <div class="modal-footer">
+            <button class="btn "><a href=""><i class="ri-bill-fill"></i>
+                <p>Payment Bills</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class=" btn"><a href=""><i class="ri-drop-fill" id="color"></i>
+                <p id="color">Water service</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class="btn"><a href=""><i class="ri-community-fill" id="color"></i>
+                <p id="color">Travel& Hotel</p>
+              </a></button>
+          </div>
+          <div class="div">
+            <button class="btn"><a href="" id="colo"><i class="ri-invision-fill"></i>
+                <p>Invitation</p>
+              </a></button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="trans-details bg-white mt-2 container p-5" style="height:300px;">
+      <div class="d-flex" style="justify-content: space-between; border-bottom: 1px solid;">
+        <p>Total Transfer</p>
+        <p id="totalTrans">$</p>
+      </div>
+      <div class="d-flex" style="justify-content: space-between;  border-bottom: 1px solid">
+        <p>Total Deposit</p>
+        <p id="totalDepo">$50000</p>
+      </div>
+      <div class="d-flex" style="justify-content: space-between;  border-bottom: 1px solid">
+        <p>Total Income</p>
+        <p id="totalIncom">$50000</p>
+      </div>
+      <div class="d-flex" style="justify-content: space-between;  border-bottom: 1px solid">
+        <p>Total Airtime</p>
+        <p id="totalAirtime">$50000</p>
+      </div>
+      <div class="d-flex" style="justify-content: space-between;  border-bottom: 1px solid">
+        <p>Total Data</p>
+        <p id="totalData">$50000</p>
+      </div>
+    </div>
+  </div>
+
+
+  </div>
+  </div>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+    tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Transfer Details</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <label for="">Amount</label>
+          <input type="text" name="" id="amountTotransfer" class="form-control border border-2 border-dark"
+            placeholder="Transfer Amount"><br>
+          <label for="">Bank Name</label><br>
+          <input type="text" name="" id="bankName" placeholder="bank name"
+            class="form-control border border-2 border-dark"><br>
+          <label for="">Acc Number</label><br>
+          <input type="text" name="" id="accnumber" placeholder="account number"
+            class="form-control border border-2 border-dark"><br>
+          <label for="">Pin</label><br>
+          <input type="password" name="" id="password" placeholder="Pin"
+            class="form-control border border-2 border-dark"><br>
+          <!-- <button onclick="transfer()" class="transfer-button">Done</button> -->
+          <button class="btn btn-primary transfer-button" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+            onclick="transfer()">Done</button>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <!-- <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first
+      modal</button> -->
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Hello, this is a pop-up!</p>
+    </div>
+  </div> -->
+
+<script>
+    var getBack = JSON.parse(localStorage.getItem("userdetails"))
+    var index = localStorage.getItem('oneuser')
+    var getName = JSON.parse(localStorage.getItem('name'))
+    var getacc = JSON.parse(localStorage.getItem('account'))
+    var getPassword = JSON.parse(localStorage.getItem('pword'))
+    var getFbal = JSON.parse(localStorage.getItem('firstbalance'))
+    var pinTrasac = JSON.parse(localStorage.getItem('transactionPin'))
+    showName.innerHTML = "Hello " + getBack[index].lname
+    showAcc.innerHTML = "Account No: " + getacc
+    console.log(getPassword)
+    console.log(getFbal)
+    totalTrans.innerHTML = "$" + getBack[index].totalTrans
+    totalDepo.innerHTML = "$" + getBack[index].totalDepo
+    totalIncom.innerHTML = "$" + getBack[index].totalIncome
+    var getrealPin = localStorage.getItem('realPin')
+    var getBack = JSON.parse(localStorage.getItem("userdetails"))
+
+    const setPin = () => {
+      window.location.href = "mysetpin.html"
+    }
+
+    const historical = () => {
+      window.location.href = "myHistory.html"
+    }
+    const transfer = () => {
+
+      getBack[index].bal
+      balance.innerHTML = balance
+      if (amountTotransfer.value == "" || bankName.value == "" || accnumber.value == "" || password.value == "") {
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Kindly fill all details',
+        })
+        load()
+      }
+      else {
+        if (localStorage.realPin == '') {
+          alert("You have not set your transaction pin")
+          load()
+        }
+        else if (getBack[index].pin == "") {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You havent set your transaction pin',
+          })
+
+        }
+        else if(password.value!==getBack[index].pin){
+        alert("You are a bloody thief")    
+        load()
+        }
+
+        else if (Number(amountTotransfer.value) > Number(getBack[index].bal)) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Insuffiecient fund',
+          })
+          load()
+        }
+
+        else {
+          getBack[index].bal -= Number(amountTotransfer.value)
+          getBack[index].totalTrans += Number(amountTotransfer.value)
+          console.log(getBack[index].bal)
+          balance.innerHTML = getBack[index].bal
+          localStorage.setItem('name1', bankName.value)
+          localStorage.setItem('name2', " bank")
+          load()
+          
+
+
+          let date = new Date().toLocaleString()
+          localStorage.setItem('date', date)
+          localStorage.setItem('accnumber', accnumber.value)
+          localStorage.setItem('amountTransfer', amountTotransfer.value)
+          var sending = {
+              sends: "Sent",
+              reciver: accnumber.value,
+              reciver2: bankName.value+" bank",
+              amot: amountTotransfer.value,
+              dAT: date,
+              bank:bankName.value,
+              acct:accnumber.value
+          }
+          getBack[index].history.push(sending)
+          console.log(getBack[index].history);
+          localStorage.setItem('userdetails', JSON.stringify(getBack))
+          Swal.fire(
+            'Good job!',
+            `You just made a transfer to ${accnumber.value} an  ${bankName.value} bank!`,
+            'success'
+          )
+        }
+      }
+    }
+
+    var getLegal = JSON.parse(localStorage.getItem('additionalInfo'))
+    function load() {
+      balance.innerHTML = "$" + getBack[index].bal
+      if (getBack[index].TransferStatus == "Successful") {
+        Swal.fire(
+          'Good job!',
+          `You just made a transfer to ${localStorage.name1}  ${localStorage.name2} a DG user!`,
+          'success'
+        )
+        getBack[index].TransferStatus = ""
+        localStorage.setItem('userdetails', JSON.stringify(getBack))
+      }
+      if (getBack[index].bvn == "" && getBack[index].mail == "" && getBack[index].nation == "" && getBack[index].state == "") {
+        limit.innerHTML = "Your account have beEn limited go to upgrade acct to unlimit it"
+        if (getBack[index].bal > 50000) {
+          balance.innerHTML =  `Your money has been froze 'UPGRADE YOUR ACCOUNT' <a href="./my bankfrozen issue.html">Why this issue?</a> `
+        balance.style.fontSize="10px !important"
+        }
+      }
+      else if (getBack[index].bvn !== "" && getBack[index].mail !== "" && getBack[index].nation !== "" && getBack[index].state !== "") {
+        limit.innerHTML = "Account upgraded successfully"
+        setTimeout(function () { limit.innerHTML = "" }, 3000)
+        balance.innerHTML = "$" + getBack[index].bal
+      }
+    }
+    load()
+    display()
+    function display() {
+      var getProfile = JSON.parse(localStorage.getItem('oneuser'))
+      tellusernum.innerHTML = "User-number: " + getProfile
+      var getfname = JSON.parse(localStorage.getItem('fname'))
+      telluserfname.innerHTML = "First Name: " + getfname
+      var getlname = JSON.parse(localStorage.getItem('lname'))
+      telluserlname.innerHTML = "Last Name: " + getlname
+      var getpnumber = JSON.parse(localStorage.getItem('phommun'))
+      telluserpnumber.innerHTML = "Phone Number: " + getpnumber
+    }
+
+    var additionalArray = []
+
+    const addSubmit = () => {
+      if (localStorage.additionalInfo) {
+        alert("You hv already store your details")
+      }
+      else {
+        if (bvn.value == "" || nation.value == "" || state.value == "" || adres.value == "" || email.value  =="") {
+          alert("fill all field")
+        }
+        else {
+          getBack[index].bvn = bvn.value
+          getBack[index].nation = nation.value
+          getBack[index].address = adres.value
+          getBack[index].state = state.value
+          getBack[index].mail = email.value
+          localStorage.setItem('userdetails', JSON.stringify(getBack))
+        }
+      }
+    }
+    var getTrapin = JSON.parse(localStorage.getItem('pword'))
+    console.log(getTrapin)
+    var pinset = []
+    function setpin() {
+
+      if (localStorage.transactionPin) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
+
+      }
+      else {
+        if (pinTrasaction.value == "") {
+          alert("Kindly input your pin")
+        }
+        else {
+          pinset.push(pinTrasaction.value)
+          console.log(pinset)
+          localStorage.setItem('transactionPin', JSON.stringify(pinset))
+        }
+      }
+
+    }
+    var getShow = localStorage.getItem('show')
+    var getremove = localStorage.getItem('showremove')
+    var s = "show"
+    function hide() {
+
+
+      if (s == "show") {
+        hiding.innerHTML = `<i class="ri-eye-fill"></i>`
+        
+        balance.innerHTML = "****"
+        s = "hide"
+      }
+      else if (s == "hide") {
+        if(getBack[index].bvn == "" && getBack[index].mail == "" && getBack[index].nation == "" && getBack[index].state == "" && getBack[index].bal>50000){
+          balance.innerHTML =  `Your money has been frozen 'UPGRADE YOUR ACCOUNT' <a href="./my bankfrozen issue.html">Why this issue?</a> `
+          balance.style.fontSize="10px"
+        }
+        else{
+          hiding.innerHTML = `<i class="ri-eye-off-fill"></i>`
+              balance.innerHTML = "$" + getBack[index].bal
+        }
+        s = "show"
+      }
+    }
+
+    const imageUploadBtn = document.getElementById('imageUploadBtn');
+    // const imageDisplay = document.getElementById('imageDisplay');
+
+    
+    imageUploadBtn.addEventListener('click', () => {
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = 'image/*';
+      input.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.addEventListener('load', () => {
+          const imageUrl = reader.result;
+          getBack[index].userImage=imageUrl
+          console.log(getBack[index].userImage);
+          imageUploadBtn.style.backgroundImage = `url(${imageUrl})`;
+          localStorage.setItem('userdetails',JSON.stringify(getBack));
+        });
+        reader.readAsDataURL(file);
+      });
+      input.click();
+    });
+    const uploadedImage = localStorage.getItem('uploadedImage');
+    if (getBack[index].userImage!=="") {
+      imageUploadBtn.style.backgroundImage = `url(${getBack[index].userImage})`;
+      imageUploadBtn.style.backgroundSize = "cover";
+      imageUploadBtn.style.backgroundRepeat = "no-repeat";
+      imageUploadBtn.style.backgroundPosition = "center";
+    }
+
+    function moneyadd() {
+      window.location.href = "mybankapp.html"
+    }
+
+  </script>
+  <!-- <script src="./create.js"></script> -->
+  <script src="
+  https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.all.min.js
+  "></script>
+  <!-- <script src="assets/js/main.js"></script> -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+  crossorigin="anonymous"></script>
+
+</body>
+</html>

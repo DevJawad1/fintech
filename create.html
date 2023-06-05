@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="create.SCSS">
+</head>
+<body>
+
+    <div class="profile-pic">
+        <label class="-label" for="file">
+          <span class="glyphicon glyphicon-camera"></span>
+          <span class="chg">Change Image</span>
+        </label>
+        <input id="file" type="file" onchange="loadFile(event)"/>
+       
+      </div>
+
+    <script src="./create.js"></script>
+    <style>
+      .chg{
+          position: relative;
+          top: -50px;
+          z-index: 2;
+          left: 370px;
+      }
+      img{
+          position: relative;
+          z-index: 5;
+      }
+      img:hover{
+          position: relative;
+          /* left: 15px; */
+          z-index: 1;
+      }
+      input{
+          width: 50px;
+          border: 2px solid ;
+          height: 50px;
+          border-radius: 300px;
+      }
+    </style>
+</body>
+</html>

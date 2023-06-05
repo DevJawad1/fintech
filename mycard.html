@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./mycard.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card-container">
+            <div class="front">
+                <div class="image">
+                    <img src="./Image folder/card-removebg-preview.png" alt="">
+                    <img src="./Image folder/visa-removebg-preview.png" alt="">
+                </div>
+                <div class="card-number-box">################</div>
+                <div class="flexbox">
+                    <div class="box">
+                        <span>Card holder</span>
+                        <div class="card-holder-name">full name</div>
+                    </div>
+                    <div class="box">
+                        <span>expires</span>
+                        <div class="expiration" style="display: flex;">
+                            <p class="exp-month">mm-</p>
+                            <p class="exp-year">yy</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div class="stripe"></div>
+                <div class="box">
+                    <span>cvv</span>
+                    <div class="cvv-box"></div>
+                    <img src="./Image folder/visa-removebg-preview.png" alt="">
+                </div>
+            </div>
+        </div>
+
+    <script>
+        // let getBack = JSON.parse(localStorage.getItem("userdetails"))
+        // var index = localStorage.getItem('oneuser')
+        // username.innerHTML = getBack[index].fname + " " + getBack[index].lname
+        // accShow.innerHTML = getBack[index].acc
+        // cardHolder.innerHTML = getBack[index].fname + " " + getBack[index].lname
+        // let getId
+        // localStorage.setItem("userdetails", JSON.stringify(getBack))
+        // if (getBack[index].cardId !== "") {
+        //     getId = ""
+        //     // getBack[index].cardId=getBack[index].cardId
+        //     console.log(getId)
+        //     cadId.innerHTML = getBack[index].cardId
+        //     cadId2.innerHTML = getBack[index].cardId
+        //     localStorage.setItem("userdetails", JSON.stringify(getBack))
+
+        // }
+        // else {
+        //     getId = Math.round(Math.random() * 10000000000000000)
+        //     getBack[index].cardId = getId
+        //     cadId.innerHTML = getBack[index].cardId
+        //     localStorage.setItem("userdetails", JSON.stringify(getBack))
+        // }
+        // var showing
+        // if (!localStorage.show) {
+        //     showing = "show"
+        //     localStorage.setItem('show', showing)
+        // }
+
+        // const show = () => {
+        //     if (details.innerHTML == "Hide details") {
+        //         document.getElementById('cardDetails').classList = "none"
+        //         details.innerHTML = "Show details"
+        //         showing = "hide"
+        //         localStorage.setItem('show', showing)
+        //     }
+        //     else if (details.innerHTML == "Show details") {
+        //         document.getElementById('cardDetails').classList = "p-3"
+        //         showing = "show"
+        //         details.innerHTML = "Hide details"
+        //         localStorage.setItem('show', showing)
+        //     }
+        // }
+
+        // function load() {
+        //     // alert()
+        //     if (localStorage.show == "show") {
+        //         // alert("dgh")
+        //         document.getElementById('cardDetails').classList = "p-3"
+        //         details.innerHTML = "Hide details"
+        //     }
+        //     else if (localStorage.show == "hide") {
+        //         document.getElementById('cardDetails').classList = "none"
+        //         details.innerHTML = "Show details"
+        //         showing = "hide"
+        //         localStorage.setItem('show', show)
+        //     }
+        // }
+
+        document.getElementById('backing').onclick = () => {
+            document.querySelector('.front').style.transform = "perspective(1000px) rotateY(-180deg)"
+            document.querySelector('.back').style.transform = "perspective(1000px) rotateY(0deg)"
+        }
+    </script>
+    <script src="./bootstrap-5.2.2-dist/js/bootstrap.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> -->
+</body>
+
+</html>

@@ -1,0 +1,256 @@
+.card{
+    display: none;
+}
+.cardBox{
+    display: block !important;
+}
+.card-bal{
+    width: 340px !important;
+    box-shadow: none !important;
+    margin: auto !important;
+    justify-content: space-between;
+    border-bottom: 10px solid white;
+    border-top: 10px solid white;
+    margin-left: -5px !important;
+    z-index: 4;
+}
+.two-card{
+    display: block !important;
+    width: 370px !important;
+    /* border: 1px solid ; */
+    padding: 10px;
+    background-color: white;
+    margin: auto !important;
+    margin-left: -5px !important;
+}
+.card-1{
+    margin-left: -5px !important;
+    border: none !important;
+    border-radius: 15px;
+    width: 340px !important;
+    height: 100px;
+    padding-top: -70px !important;
+    box-shadow: none !important;
+}
+.card-1 button{
+    width: 155px !important;
+    margin-left: 10px !important;
+}
+.last-div{
+    width: 350px !important;
+    margin: auto !important;
+    border: none !important;
+    padding: 0% !important;
+    background-color: transparent !important;
+    height: 50px !important;
+}
+.cardName{
+    display: none;
+}
+.airtime-div{
+    display: grid;
+    grid-template-columns: 45% 55% !important;
+    height: 100px !important;
+    font-size: 5px;
+    border: none !important;
+    background-color: white;
+}
+.data-div{
+    display: grid;
+    grid-template-columns: 45% 55% !important;
+    height: 100px !important;
+    margin-top: 30px!important;
+    font-size: 10px;
+    background-color: white;
+    border: none !important;
+    
+}
+.water{
+    width: 350px !important;
+}
+.main{
+    width: 400px;
+    top: 60px !important;
+    background-color: white;
+    height: 1100px;
+}
+body{
+    display: flex !important;
+    justify-content: center !important;
+    -ms-flex-align: center !important;
+    /* background-color: rgba(128, 128, 128, 0.705); */
+}
+.topbar{
+    font-size: 10px !important;
+    display: flex !important;
+    justify-content: space-around !important;
+    width: 100%;
+}
+#showAcc,#showName{
+    font-size: 10px !important;
+}
+
+.down-div{
+    display: block !important;
+    width: 350px !important;
+}
+.flex{
+    box-shadow: none !important;
+}
+.transfer-div{
+   display: none;
+}
+.money-transfer a{
+    text-decoration: none;
+    color: rgb(88, 7, 22);
+    font-size: 15px !important;
+}
+.money-transfer, .Services{
+    width: 400px !important;
+}
+.Services a{
+    text-decoration: none;
+    color: rgb(7, 32, 7);
+    font-size: 15px !important;
+}
+.Services{
+    margin: 0%;
+    margin-left: -20px !important;
+}
+.money-transfer,.Services{
+   padding: 0% !important;
+   width: 390px !important;
+   margin: auto;
+}  
+.numbers{
+   font-size: 25px !important;
+   line-height: 10px;
+}
+.numbers button{
+    margin-left: 40px !important;
+    border: 1px solid;
+  }
+.bal-holder{
+    position: relative;
+    width: 170px;
+}
+.card-bal:hover{
+    background-color: white !important;
+    color: black !important
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .hide-btn,
+.cardBox .card:hover .iconBx {
+  color: black !important;
+}
+  .card-bal:hover .numbers,
+  .card-bal:hover .cardName,
+  .card-bal:hover .hide-btn,
+  .card-bal:hover #limit{
+    color: black !important;
+    background-color: white;
+}
+*{
+    /* outline: 1px solid; */
+}
+.card-bal:hover .hide-btn{
+    background-color: white !important;
+    color: black !important;
+}
+#balance{
+    /* font-size: 10px !important; */
+    /* line-height: 15px; */
+    /* font-weight: 1000; */
+  }
+.numbers{
+    /* font-size: 1.5rem !important; */
+}
+.card-bal .iconBx:hover{
+  color: black !important;
+}
+.hide-btn{
+    width: 5px !important;
+    position: inherit;
+    top: 2px;
+    left: -22px;
+    font-size: 20px;
+}
+.service-button{
+    width: 350px;
+    margin: auto;
+}
+.all-button h4{
+    color: black;
+    padding-top: 20px;
+     padding-left: 30px;
+}
+.body{
+    background-color: gray ;
+}
+.btn-pro{
+    position: relative;
+    left: 150px;
+    top: -55px;
+    background-color: rgba(128, 128, 128, 0.63) !important;
+}
+.btn-leg{
+    position: relative;
+    top: -50px;
+    left: -25px;
+    background-color: rgba(128, 128, 128, 0.63) !important;
+}
+.btn-tra{
+    position: relative;
+    left: 150px;
+    top: -88px;
+    background-color: rgba(128, 128, 128, 0.63) !important;
+}
+.btn-set{
+    position: relative;
+    top: -18px;
+    left: -25px !important;
+    background-color: rgba(128, 128, 128, 0.63) !important;
+}
+.pin-body{
+    height:600px !important;
+}
+#file{
+    width: 50px;
+}
+.canva a{
+    text-decoration: none;
+    color: grey;
+    position: relative;
+    top: -3px;
+    left: 10px;
+}
+.canva h5{
+    font-size: 25px;
+}
+.air{
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none !important;
+}
+.air-2{
+    height: 70px;
+}
+.file{
+    background-color: rgba(255, 255, 255, 0.034) !important;
+    border: none !important;
+}
+body{
+    overflow-x: hidden !important;
+}
+.hide-btn:active{
+    border: none !important;
+}
+.side-canvas{
+    width: 300px !important;
+    font-size: 10px !important;
+}
+.trans-details{
+    width: 390px;
+}

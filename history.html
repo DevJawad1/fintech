@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+    <title>Document</title>
+</head>
+
+<body class="pt-5">
+    <div class="container shadow" style="display: flex;align-items: center;justify-content: space-around;">
+        <div class="btn btn-warning" onclick="transferDsp()">Transfer history</div>
+        <div class="btn btn-info">Recieved history</div>
+    </div>
+    <div class="container shadow p-5 mt-2">
+        <div id="result">
+            <p class="text-center">See all your recent transfer </p>
+        </div>
+    </div>
+    <script>
+        let getDate = localStorage.getItem('date')
+        let amount = localStorage.getItem('amountTransfer')
+        let account = localStorage.getItem('accnumber')
+        let gethistory=JSON.parse(localStorage.getItem('allhistory'))
+        console.log(gethistory)
+        const transferDsp = () => {
+            result.innerHTML += `
+             
+           
+           `
+        }
+    </script>
+</body>
+<div class="container shadow">
+    <p>${getDate}</p>
+    <p>You Transfer ${amount} to ${account}</p>
+ </div>
+</html>

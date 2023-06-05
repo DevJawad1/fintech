@@ -1,0 +1,37 @@
+.container{
+    margin: auto;
+    width: 500px !important;
+    height: 530px;
+    border: 1px solid;
+    /* background-image: url(./Landing-Page-Open-an-account.png);
+    background-size: cover; */
+}
+.div{
+    width: 300px ;
+    margin: auto;
+    margin-top: 10px;
+}
+button{
+    border: 1px solid;
+    height: 40px;
+    width: 300px;
+    margin-top: 30px;
+}
+body{
+    padding: 30px;
+}
+@media (max-width:600px) {
+    body{
+        padding: 10px !important;
+    }
+    .container{
+        margin: auto !important;
+        margin-left: -10px;
+       width: 300px !important;
+        height: 500px;
+        border: 1px solid;
+    }
+    button, .div{
+        width: 280px;
+    }
+}

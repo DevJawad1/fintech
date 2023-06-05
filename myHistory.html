@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./myhistory.css">
+    <title>Document</title>
+</head>
+
+<body class="p-3">
+    <!-- <h3 style="background-color: white;" class="fixed-top">See history</h3> -->
+    <div class="d-flex fixed-top bg-white" style="justify-content: space-around; margin-top: px; height: 50px;">
+        <P onclick="sent()" id="set">Sent history</P>
+        <p onclick="recieve()" id="rec">Recieve history</p>
+    </div>
+    <div class="div" style="margin-top: 70px !important;">
+        <div id="disp" class=""></div>
+    </div>
+
+    <script>
+        var getBack = JSON.parse(localStorage.getItem('userdetails'))
+        var index = localStorage.getItem('oneuser')
+        var getacc = localStorage.getItem('account')
+        var getName = JSON.parse(localStorage.getItem('name'))
+        var getNUMBER = JSON.parse(localStorage.getItem('phommun'))
+        console.log(index)
+        console.log(getBack[index].history)
+
+        const sent = () => {
+            disp.innerHTML = ""
+            // disp2.innerHTML = ""
+            set.style.borderBottom = "thin solid black"
+            rec.style.borderBottom = ""
+            getBack[index].history.map((user, i) => {
+                if (user.sends) {
+                    if (user.reciver !== getBack[index].fname) {
+                        disp.innerHTML += `
+                    <div class="hist p-3 shadow">
+                    <div><p>Send money<p></div>    
+                    <p class="text-center fadi">Success</p>
+                    <h4 class="text-center fad2">${user.amot}.00</h4>    
+                    <h4 class="mt-4 text-center">You send money to ${user.reciver} ${user.reciver2}<h4>
+                    <h6 style="text-align:end;border-top:1px solid grey;padding-top:10px" class="mt-3">${user.dAT}</h6>
+                    <button class="btn btn-light bt" onclick="save(${i})">View</button>
+                    </div>
+                   `
+                    }
+                }
+            })
+
+        }
+        sent()
+        const recieve = () => {
+            // disp2.innerHTML = ""
+            disp.innerHTML = ""
+            rec.style.borderBottom = "thin solid black"
+            set.style.borderBottom = ""
+            getBack[index].history.map((user, i) => {
+                if (user.recif) {
+                    if (user.sender !== getBack[index].fname) {
+                        disp.innerHTML += `
+                          <div class="container hist p-3 shadow">
+                          <div><p>Recieve money<p></div>    
+                          <p class="text-center fadi">Success</p>
+                          <h4 class="text-center fad2">${user.amot}.00</h4>    
+                          <h4 class="mt-4">You recieve money from ${user.sender} ${user.sender2}<h4>
+                          <h6 style="text-align:end;border-top:1px solid grey;padding-top:10px" class="mt-3">${user.dat}</h6>
+                          </div>
+                          <button class="btn btn-light but" onclick="savetwo(${i})">View</button>
+                          `
+                    }
+                }
+
+            })
+
+        }
+
+       getBack[index].eachHistory=[] 
+        const save = (ind) => {
+            let oneHistory={
+                amount:getBack[index].history[ind].amot,
+                name:getBack[index].history[ind].reciver,
+                name2:getBack[index].history[ind].reciver2,
+                date:getBack[index].history[ind].dAT,
+                acct:getBack[index].history[ind].acct,
+                send:getBack[index].history[ind].sends,
+            }
+            getBack[index].eachHistory.pop()
+            getBack[index].eachHistory.push(oneHistory)
+            console.log(getBack[index].eachHistory);
+            localStorage.setItem('userdetails', JSON.stringify(getBack))
+            window.location.href="mypdf.html"
+
+         
+        }
+        const savetwo = (ind) => {
+            let oneHistory={
+                amount:getBack[index].history[ind].amot,
+                name:getBack[index].history[ind].sender,
+                name2:getBack[index].history[ind].sender2,
+                date:getBack[index].history[ind].dat,
+                acct:getBack[index].history[ind].acct,
+                send:getBack[index].history[ind].recif,
+            }
+            getBack[index].eachHistory.pop()
+            getBack[index].eachHistory.push(oneHistory)
+            console.log(getBack[index].eachHistory);
+            localStorage.setItem('userdetails', JSON.stringify(getBack))
+            window.location.href="mypdf.html"
+        }
+
+    </script
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dv+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+
+</html>

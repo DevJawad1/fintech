@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./signup.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Digitize <br>Banking</h1>
+    <p class="p">Sign up </p>
+    <div class="white">
+      <div class="inputBox">
+        <input type="text" required="required" id="fn" onblur="firstinp()">
+        <span id="sp">Firstname</span>
+        <i id="i"></i>
+      </div>
+      <p id="red"></p>
+      <div class="inputBox">
+        <input type="text" required="required" id="ln" onblur="firstinp()">
+        <span>Laststname</span>
+        <i></i>
+      </div>
+      <div class="inputBox">
+        <input type="text" required="required" id="pn" onblur="firstinp()">
+        <span>Phone number</span>
+        <i></i>
+      </div>
+      <div class="inputBox">
+        <input type="password" required="required" id="ps" onblur="firstinp()">
+        <span>password </span>
+        <button class="ri">
+          <p class="ri-eye-fill" id="eye" onclick="toggle()"></p>
+        </button>
+
+        <i></i>
+      </div>
+      <div class="inputBox">
+        <input type="password" required="required" id="pss">
+        <span>confirm password</span>
+        <i></i>
+      </div>
+      <div class="inputsub">
+        <input type="submit" required="required" onclick="submit()" class="btn btn-primary form-control">
+        <p>Aiready have an account <a href="./login.html">Log in</a></p>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="bottom">
+    <h5>@Digitize Bankine</h5>
+  </div> -->
+  <script>
+    var alluser = []
+    var allaccountnum = []
+
+    if (localStorage.userdetails) {
+      var olddata = JSON.parse(localStorage.getItem('userdetails'))
+      alluser = olddata
+    }
+    if (localStorage.useraccountnum) {
+      var oldACC = JSON.parse(localStorage.getItem('useraccountnum'))
+      allaccountnum = oldACC
+    }
+
+    let password=document.getElementById('ps').value
+    function submit() {
+
+      if (fn.value == "" || ln.value == "" || pn.value == "" || ps.value == "") {
+        // alert("Kindly fill all field")
+        swal({
+          title: "Kindly fill all details",
+
+        });
+      }
+      else if (fn.value == Number || ln.value == Number) {
+        alert("firstame cant be a number")
+      }
+      else if (ps.value == /^(\d+)\s\1\s\1$/) {
+        alert("Choose a strong password")
+      }
+      else if (ps.value !== pss.value) {
+        // alert("password mismatch")
+        swal({
+          title: "Password Mismatch",
+          input:"text",
+        });
+      }
+       if(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+~`\-={}[\]:;'"<>,.?/\\])(?=.*[^\p{L}\p{N}]).{8,}$/.test(password)){
+        swal({
+          title: "Password not strong",
+          input:"text",
+        });
+      }
+      else if (pn.value.lenght > 11 || pn.value.lenght > 11) {
+        swal({
+          title: "PhoneNumber is invalid",
+          input:"text",
+        });
+      }
+      else {
+        var eachuser = {
+          fname: fn.value,
+          lname: ln.value,
+          pnumber: pn.value,
+          pword: ps.value,
+          bvn:"",
+          mail:"",
+          nation:"",
+          state:"",
+          address:"",
+          gender:"",
+          acc: Number(pn.value),
+          bal: Number(1500),
+          history:[],
+          eachHistory:[],
+          pin:"",
+          cardId:"",
+          userImage:"",
+          TransferStatus:"",
+          totalTrans:Number(),
+          totalDepo:Number(),
+          totalIncome:Number(),
+          totalData:Number(),
+          totalAirtime:Number()
+        }
+
+        alluser.push(eachuser)
+        allaccountnum.push(Number(eachuser.pnumber))
+        console.log(allaccountnum)
+        localStorage.setItem('userdetails', JSON.stringify(alluser))
+        localStorage.setItem('useraccountnum', JSON.stringify(allaccountnum))
+        window.location.href = "login.html"
+      }
+    }
+    var state = false
+    function toggle() {
+      if (state) {
+        document.getElementById("ps").setAttribute("type", "passwor");
+        document.getElementById("eye").style.color = '#7a797e'
+        state = false
+      }
+      else {
+        document.getElementById("ps").setAttribute("type", "password");
+        document.getElementById("eye").style.color = '#5887ef'
+        state = true
+      }
+    }
+    function firstinp() {
+      if (fn.value == "") {
+        red.innerText = "fill this field"
+        i.style.border = "thin solid red"
+        red.style.color = "red"
+        sp.style.color = "red"
+        red.style.textAlign = "center"
+      }
+      else {
+        red.innerText = ""
+        i.style.border = "thin solid black"
+        red.style.color = "black"
+        sp.style.color = "black"
+        red.style.textAlign = "center"
+      }
+    }
+  </script>
+</body>
+
+</html>

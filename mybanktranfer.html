@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" id="htMl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">   
+    <link rel="stylesheet" href="./mybanktransfer.css">
+</head>
+
+<body id="myBody">
+
+    <div class="top-div">
+        <h3>To digitize</h3>
+        <p>History</p>
+    </div>
+    <div class="container d-flex">
+        <input type="text" id="searching" placeholder="Search friends" class="form-control">
+        <button class="btn" onclick="search()">Search</button>
+
+    </div>
+    <div class="container" id="modeOne" style="background-color: transparent;margin-bottom: auto;">
+        <p id="nameOne" style="display: none;"></p>
+
+        <div class="amountDiv" id="amountdiv">
+            <input type="number" name="" id="amount" class="form-control">
+            <div class="div">
+                <input type="button" class="btn btn-light number-btn" name="" id="letOne" onclick="display(1)"
+                    value="1">
+                <input type="button" class="btn btn-light number-btn" name="" id="letTwo" onclick="display(2)"
+                    value="2">
+                <input type="button" class="btn btn-light number-btn" name="" id="letThree" onclick="display(3)"
+                    value="3"><br>
+                <input type="button" class="btn btn-light number-btn" name="" id="letFour" onclick="display(4)"
+                    value="4">
+                <input type="button" class="btn btn-light number-btn" name="" id="letFive" onclick="display(5)"
+                    value="5">
+                <input type="button" class="btn btn-light number-btn" name="" id="let" onclick="display(6)"
+                    value="6"><br>
+                <input type="button" class="btn btn-light number-btn" name="" id="let" value="7" onclick="display(7)">
+                <input type="button" class="btn btn-light number-btn" name="" id="let" value="8" onclick="display(8)">
+                <input type="button" class="btn btn-light number-btn" name="" id="let" value="9"
+                    onclick="display(9)"><br>
+                <input type="button" class="btn btn-light number-btn" name="" id="let" value="00"
+                    onclick="display('00')">
+                <input type="button" class="btn btn-light number-btn" name="" id="let" value="0" onclick="display(0)">
+                <button class="btn btn-light number-btn " data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                    onclick="transfer()">✔</button><br>
+                <button class=" btn btn-light number-btn" onclick="deletee()">✖</button>
+                <button class=" btn btn-light number-btn del" onclick="deletee1()" style="width: 115px;">Delete
+                    all</button>
+            </div>
+        </div>
+        <div id="password" style="display: none;"></div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Transfer Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="response"></div>
+                    <button class="btn btn-primary transfer-button" data-bs-target="#exampleModalToggle"
+                        data-bs-toggle="modal">Back</button>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+
+        </div>
+
+        <div id="teller"></div>
+        <script>
+
+            var getBack = JSON.parse(localStorage.getItem("userdetails"))
+            var index = localStorage.getItem('oneuser')
+            var getacc = localStorage.getItem('account')
+            var getName = JSON.parse(localStorage.getItem('name'))
+            var getNUMBER = JSON.parse(localStorage.getItem('phommun'))
+            console.log(getNUMBER, getName);
+            var found = false
+            function display(val) {
+
+                document.getElementById('amount').value += val
+                return val
+
+            }
+            function deletee() {
+                amount.value = amount.value.slice(0, -1)
+            }
+            function deletee1() {
+                amount.value = amount.value.slice(0, -0)
+            }
+            var found = false
+            const search = () => {
+                getBack.filter((user, i) => {
+                    if (searching.value == user.acc || searching.value == user.pnumber) {
+                        found = true
+                        console.log(user)
+                       
+                    }
+
+                })
+
+                if (found == true) {
+
+                    if (searching.value == getNUMBER || searching.value == getacc) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'This your personal account!',
+                        })
+                        // modeOne.innerHTML=`<h1>This is yo`
+                    }
+                    else {
+                        getBack.filter((user, i) => {
+                            if(searching.value==user.acc){
+                                console.log(user.acc)
+                                Swal.fire(
+                                  'Account found',
+                                  'Transferring to ' + user.fname + " " + user.lname,
+                                  'success'
+                               )
+                               modeOne.style.backgroundColor="white"
+                            }
+                            // else if(searching.value!==user.acc){
+                            //  Swal.fire({
+                            //    icon: 'error',
+                            //    title: 'Oops...',
+                            //    text: 'This account does not exist!',
+                            //  })
+                            // }
+                       
+                        })
+                        document.getElementById('amountdiv').classList = "amountDiv2"
+                    }
+                }
+                else {
+                    Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'This account does not exist',
+                        })
+                    searching.value = "";
+
+                }
+            }
+            const transfer = () => {
+                getBack.filter((user, i) => {
+                    if (searching.value == user.acc || searching.value == user.pnumber) {
+                        console.log(user)
+                        if (amount.value == "") {
+                            response.innerHTML = `
+                        <div class ="response shadow">
+                        <p style="padding-top:50px">Kindly enter the amount you are<br> transfering</p>
+                        </div>
+                        `
+                        }
+                        else if (amount.value > getBack[index].bal) {
+                            response.innerHTML = `
+                        <div class ="response shadow">
+                        <p style="padding-top:50px">Insuffiecient Fund</p>
+                        <button class="btn btn-success" onclick="refund(${index})">Re-fund</button>
+                        </div>
+                        `
+                        }
+                        else if (amount.value < 100) {
+                            response.innerHTML = `
+                        <div class ="response shadow">
+                        <p style="padding-top:50px">This amount is less than 100</p>
+                        </div>
+                        `
+                        }
+                        else {
+
+                            response.innerHTML = `
+                    <div class="response shadow" style="padding:20px;padding-top:50px;">  
+                   <input type="text" name="" id="passWord" class="form-control" placeholder="Enter your pin"><br>
+                   <button class="btn btn-success" onclick="finalTransfer()" style="">Done</button>
+
+                    </div>    
+                        `
+
+                        }
+
+                    }
+                })
+            }
+
+
+            const finalTransfer = () => {
+                if (getBack[index].pin == "") {
+                    response.innerHTML = `
+                    <div class="response shadow">
+                     <p style="padding-top:50px">You haven't set your pin <br> Go to home and click "set pin"</p>
+                    </div>    
+            `
+                }
+                if (passWord.value !== getBack[index].pin) {
+                    response.innerHTML = `
+                    <div class="response shadow">
+                     <p style="padding-top:50px">Incorect pin</p>
+                    </div>    
+                        `
+                }
+                else {
+                    getBack.filter((user, i) => {
+                        if (searching.value == user.acc || searching.value == user.pnumber) {
+                            found = true
+                            console.log(user)
+                            console.log(user.history);
+                            getBack[index].bal -= Number(amount.value)
+                            getBack[index].totalTrans+=Number(amount.value)
+                            user.bal += Number(amount.value)
+                            user.totalIncome+=Number(amount.value)
+                            getBack[index].TransferStatus="Successful"
+                            localStorage.setItem('name1', user.fname)
+                            localStorage.setItem('name2', user.lname)
+                          
+                            let date = new Date().toLocaleString()
+                            var recieving = {   
+                                recif: "Recieved",
+                                sender: getBack[index].fname,
+                                sender2: getBack[index].lname,
+                                amot: amount.value,
+                                dat: date,
+                                acct:getBack[index].acc,
+                                bank:"DG bank",
+                            }
+                            var sending = {
+                                sends: "Sent",
+                                acct:user.acc,
+                                reciver: user.fname,
+                                reciver2: user.lname,
+                                amot: amount.value,
+                                dAT: date,
+                                bank:"DG bank",
+
+                            }
+                            user.history.push(recieving)
+                            getBack[index].history.push(sending)
+                            console.log( getBack[index].history)
+                            console.log(user.history)
+                            localStorage.setItem('userdetails', JSON.stringify(getBack))
+                            response.innerHTML = `
+                    <div class="response shadow">
+                   <p>Transfer Successful</p>
+                   <button class="btn btn-success" onclick="home(${index})">Back to home</button>
+                    </div>    
+                    `
+
+                        }
+
+                    })
+                }
+            }
+            const home = () => {
+                window.location.href = "dashboard.html"
+            }
+            const refund = () => {
+                window.location.href="mybankapp.html"
+                let directory="from transfer page"
+                localStorage.setItem("transferPage",directory)
+            //     response.innerHTML = `
+            // <div class ="response shadow p-2" style="padding-top:50px !important" >
+                
+            //     <input type="Number" name="" id="amountRefund" class="form-control" placeholder="Amount">
+
+            // <button class="btn btn-success" onclick="doneRefund()">Done</button>
+            // </div>
+            // `
+
+            }
+            const doneRefund = () => {
+                getBack[index].bal += Number(amountRefund.value)
+                localStorage.setItem('userdetails', JSON.stringify(getBack))
+                alert("done")
+            }
+
+        </script>
+        <script src="./bootstrap-5.2.2-dist/js/bootstrap.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+</body>
+
+</html>

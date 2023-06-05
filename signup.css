@@ -1,0 +1,131 @@
+.container{
+    width: 400px !important;
+    background-image: url(./istockphoto-1216481372-612x612.jpg);
+    height: 117vh;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.233);
+    background-size: 400px;
+    /* background-position: center; */
+    /* align-items: baseline; */
+}
+.container h1{
+    color:  rgb(8, 49, 24);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 3px 3px white;
+    font-size: 50px;
+    font-weight: 1000;
+}
+.container .p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    border-bottom:2px solid white;
+    position: relative;
+    top: 50px;
+}
+.btn{
+    position: relative;
+    /* top: -20px; */
+}
+.inputsub{
+    width: 250px;
+    margin: auto;
+    /* border: 1px solid; */
+    position: relative;
+    top: 40px;
+}
+.ri{
+    text-align: end;
+    position: relative;
+    position: absolute;
+    /* margin-top: -25px; */
+    top: 20px;
+    background-color: white;
+    border: none;
+    height: 30px;
+    cursor: pointer;
+}
+.white{
+    padding-top: 20px;
+    background-color: white;
+    width: 400px;
+    height: 585px;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: -11.8px;
+    position: relative;
+    top: -5px !important;
+}
+.inputBox{
+    position: relative;
+    width: 300px;
+    margin: auto;
+    margin-top: 35px;
+}
+.inputBox input{
+    position: relative;
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #23242a;
+    font-size: 1em;
+    letter-spacing: 0.05em;  
+    z-index: 10;
+}
+.inputBox span{
+    position: absolute;
+    left: 0%;
+    padding: 20px 0px 10px;
+    font-size: 1em;
+    color: #8f8f8f;
+    pointer-events: none;
+    letter-spacing: 0.05em;
+    transition: 0.7s;
+    
+}
+.inputBox input:valid ~ span,
+.inputBox input:focus ~ span{
+    color: black;
+    transform:translateX(0px) translateY(-40px);
+    font-size: 0.75em;
+}
+.inputBox i{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    /* background: #4845ff; */
+    border:1px solid;
+    border-radius: 4px;
+    transition: 0.5s;
+    pointer-events: none;
+}
+.inputBox input:valid ~ i,
+.inputBox input:focus ~ i{
+    height: 44px;
+}
+@media (max-width:500px) {
+    .container{
+        width: 350px !important;
+        height: 100vh !important;
+        border-radius: 0%;
+        box-shadow: none;
+    }
+    .white{
+        height: 77vh !important;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius:0px;
+        width: 350px;
+        top: 140px;
+    }
+    /* .inputsub{
+        margin-top: -20px;
+    } */
+}

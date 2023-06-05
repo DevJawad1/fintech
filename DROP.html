@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap-5.2.2-dist/css/bootstrap.css">
+</head>
+<body>
+    <div class="one d-flex">
+        <p>ade</p>
+        <div>
+            <p id="ayo">aqyo</p>
+             
+        </div>
+        <div>
+            <div class="div">
+                <button onclick="ola()" id="olaA">ola</button>
+            </div>
+            <div  id="f" class="shado"></div>     
+        </div>
+        
+    </div>
+    <style>
+        .div{
+            background-color: white;
+            position: relative;
+            z-index: 2;
+        }
+        .one{
+            justify-content: space-between;
+            width: 400px;
+        }
+        .two{
+            width: 200px;
+            height: 200px;
+            /* box-shadow: 1px p; */
+            background-color: blue;
+            /* visibility: hidden; */
+            animation-name: two;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            animation-duration: 200ms;
+            position: relative;
+            top: 0px;
+           
+        }
+        @keyframes two {
+            100%{
+            position: relative;
+            top: -200px;
+            }
+        }
+        @keyframes three {
+            100%{
+            position: relative;
+            top: 0px;
+            }
+        }
+        .three{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            visibility: visible;
+            animation-name: three;
+            animation-timing-function: linear;
+            animation-fill-mode: forwards;
+            animation-iteration-count: 1;
+            animation-duration:200ms;
+            position: relative;
+            top: -200px;
+        }
+    </style>
+    <script>
+        // f.innerHTML=`<div class="two"></div>`
+        // function ola(){
+           
+        // }
+        olaA.addEventListener("click",()=> {
+            if(olaA.innerHTML=="ola"){
+                // alert("djh")
+                f.innerHTML=`<div class="three"></div>`
+                olaA.innerHTML="BOOM"
+            }
+            else if(olaA.innerHTML=="BOOM"){
+                f.innerHTML=`<div class="two"></div>`
+                olaA.innerHTML="ola"
+            }
+        })
+        ayo.addEventListener("click",()=> {
+            if(olaA.innerHTML=="ola"){
+                // alert("djh")
+                f.innerHTML=`<div class="three"></div>`
+                olaA.innerHTML="BOOM"
+            }
+            else if(olaA.innerHTML=="BOOM"){
+                f.innerHTML=`<div class="two"></div>`
+                olaA.innerHTML="ola"
+            }
+        })
+    </script>
+</body>
+</html>

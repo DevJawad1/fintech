@@ -1,0 +1,26 @@
+.container{
+    /* border: 2px solid rgb(0, 81, 255); */
+    padding-top: 150px;
+    text-align: center;
+    color: black;
+    margin-top: 15px;
+    height: 200px;
+}
+#number{
+    border: none;
+    outline: none;
+    text-align: center;
+    border-bottom: 2px solid;
+    position: relative;
+    top: 10px;
+    width: 300px;
+}
+.verify{
+    width: 100px;
+    margin-top: 20px;
+}
+h3{
+    text-align: center;
+    position: relative;
+    top: 100px;
+}
